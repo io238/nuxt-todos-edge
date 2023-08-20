@@ -101,6 +101,3 @@ TURSO_DB_TOKEN=...
 
 You can see a live demo using Turso on https://nuxt-todos-turso.pages.dev
 
-## License
-
-[MIT License](./LICENSE)
