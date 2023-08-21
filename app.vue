@@ -1,45 +1,49 @@
-<script setup>
-const { loggedIn } = useUserSession()
-const colorMode = useColorMode()
+<script setup lang="ts">
+const { loggedIn } = useUserSession();
+const colorMode = useColorMode();
 
 watch(loggedIn, () => {
   if (!loggedIn.value) {
-    navigateTo('/')
+    navigateTo("/");
   }
-})
+});
 
 function toggleColorMode() {
-  colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark'
+  colorMode.preference = colorMode.preference === "dark" ? "light" : "dark";
 }
 
 useHead({
-  htmlAttrs: { lang: 'en' },
-  link: [{ rel: 'icon', href: '/icon.png' }],
-})
+  htmlAttrs: { lang: "en" },
+  link: [{ rel: "icon", href: "/icon.png" }],
+});
 
 useSeoMeta({
   viewport: {
-    width: 'device-width',
+    width: "device-width",
     initialScale: 1,
     maximumScale: 1,
   },
-  title: 'Nuxt Todos Edge',
+  title: "io238 Todos",
   description:
-    'A Nuxt demo hosted with Edge-side rendering, authentication and queyring a SQLite database',
-  ogImage: '/social-image.png',
-  twitterImage: '/social-image.png',
-  twitterCard: 'summary_large_image',
-})
+    "A Nuxt demo hosted with Edge-side rendering, authentication and queyring a SQLite database",
+  ogImage: "/social-image.png",
+  twitterImage: "/social-image.png",
+  twitterCard: "summary_large_image",
+});
 </script>
 
 <template>
-  <UContainer class="min-h-screen flex flex-col justify-center">
+  <UContainer class="py-10 flex flex-col justify-center">
     <div class="mb-2 text-right">
       <UButton
         square
         variant="ghost"
         color="black"
-        :icon="$colorMode.preference === 'dark' ? 'i-heroicons-moon' : 'i-heroicons-sun'"
+        :icon="
+          $colorMode.preference === 'dark'
+            ? 'i-heroicons-moon'
+            : 'i-heroicons-sun'
+        "
         @click="toggleColorMode"
       />
     </div>
@@ -48,19 +52,11 @@ useSeoMeta({
 
     <footer class="text-center mt-2">
       <NuxtLink
-        href="https://github.com/atinux/nuxt-todos-edge"
+        href="https://github.com/io238/nuxt-todos-edge"
         target="_blank"
         class="text-sm text-gray-500 hover:text-gray-700"
       >
         GitHub
-      </NuxtLink>
-      ·
-      <NuxtLink
-        href="https://twitter.com/Atinux"
-        target="_blank"
-        class="text-sm text-gray-500 hover:text-gray-700"
-      >
-        Twitter
       </NuxtLink>
     </footer>
   </UContainer>
