@@ -98,7 +98,7 @@ const items = [
         name="todo"
         :disabled="loading"
         class="flex-1"
-        placeholder="Make a Nuxt demo"
+        placeholder="Do something..."
         autocomplete="off"
         autofocus
         :ui="{ wrapper: 'flex-1' }"
