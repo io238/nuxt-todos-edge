@@ -71,7 +71,7 @@ const timeAgo = useTimeAgo(locatedAt);
           </div>
         </div>
         <div v-else>
-          <UAlert icon="i-heroicons-map-pin" color="red" variant="solid" description="Location not available!" />
+          <UAlert icon="i-heroicons-map-pin" color="red" variant="solid" title="Warning" description="Location not available!" />
         </div>
       </div>
     </footer>
