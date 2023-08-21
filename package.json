@@ -17,10 +17,10 @@
     "bufferutil": "^4.0.7",
     "drizzle-kit": "^0.19.12",
     "drizzle-orm": "^0.28.1",
-    "h3": "1.8.0-rc.3",
+    "h3": "^1.8.0",
     "h3-zod": "^0.5.1",
     "utf-8-validate": "^6.0.3",
-    "zod": "^3.21.4"
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@nuxt/devtools": "^0.7.5",
