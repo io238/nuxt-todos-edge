@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const { loggedIn } = useUserSession();
 const colorMode = useColorMode();
 
@@ -30,6 +30,10 @@ useSeoMeta({
   twitterImage: "/social-image.png",
   twitterCard: "summary_large_image",
 });
+
+import { useGeolocation, useTimeAgo } from "@vueuse/core";
+const { isSupported, coords, locatedAt } = useGeolocation();
+const timeAgo = useTimeAgo(locatedAt);
 </script>
 
 <template>
@@ -58,6 +62,18 @@ useSeoMeta({
       >
         GitHub
       </NuxtLink>
+
+      <div class="text-sm mt-5">
+        <div v-if="isSupported && locatedAt">
+          {{ coords.latitude }}, {{ coords.longitude }}
+          <div class="text-red">
+            {{ timeAgo }}
+          </div>
+        </div>
+        <div v-else>
+          <UAlert icon="i-heroicons-map-pin" color="red" variant="solid" description="Location not available!" />
+        </div>
+      </div>
     </footer>
   </UContainer>
   <UNotifications />
