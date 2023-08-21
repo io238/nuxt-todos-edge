@@ -112,34 +112,48 @@ const items = [
       />
     </div>
 
-    <ul class="divide-y divide-gray-200 dark:divide-gray-800">
-      <TransitionGroup>
-        <li
-          v-for="todo of todos"
-          :key="todo.id"
-          class="flex items-center gap-4 py-2"
+    <TransitionGroup
+      name="list"
+      tag="ul"
+      class="divide-y divide-gray-200 dark:divide-gray-800"
+    >
+      <li
+        v-for="todo of todos"
+        :key="todo.id"
+        class="flex items-center gap-4 py-2"
+      >
+        <span
+          class="flex-1 font-medium"
+          :class="[todo.completed ? 'line-through text-gray-500' : '']"
         >
-          <span
-            class="flex-1 font-medium"
-            :class="[todo.completed ? 'line-through text-gray-500' : '']"
-          >
-            {{ todo.title }}
-          </span>
+          {{ todo.title }}
+        </span>
 
-          <UToggle
-            :model-value="Boolean(todo.completed)"
-            @update:model-value="toggleTodo(todo)"
-          />
+        <UToggle
+          :model-value="Boolean(todo.completed)"
+          @update:model-value="toggleTodo(todo)"
+        />
 
-          <UButton
-            color="red"
-            variant="soft"
-            size="2xs"
-            icon="i-heroicons-x-mark-20-solid"
-            @click="deleteTodo(todo)"
-          />
-        </li>
-      </TransitionGroup>
-    </ul>
+        <UButton
+          color="red"
+          variant="soft"
+          size="2xs"
+          icon="i-heroicons-x-mark-20-solid"
+          @click="deleteTodo(todo)"
+        />
+      </li>
+    </TransitionGroup>
   </UCard>
 </template>
+
+<style>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>

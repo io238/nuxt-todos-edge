@@ -1,27 +1,24 @@
-import { createResolver } from 'nuxt/kit'
+import { createResolver } from "nuxt/kit";
 
-const { resolve } = createResolver(import.meta.url)
+const { resolve } = createResolver(import.meta.url);
 
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/devtools',
-    '@nuxthq/ui'
-  ],
+  modules: ["@nuxt/devtools", "@nuxthq/ui"],
   colorMode: {
-    preference: 'light'
+    preference: "light",
   },
   ui: {
-    icons: ['heroicons', 'simple-icons']
+    icons: ["heroicons", "simple-icons"],
   },
   runtimeConfig: {
-    dbDir: resolve('./server/db'),
+    dbDir: resolve("./server/db"),
     github: {
-      clientId: '',
-      clientSecret: ''
+      clientId: "",
+      clientSecret: "",
     },
     session: {
-      name: 'nuxt-session',
-      password: ''
-    }
-  }
-})
+      name: "nuxt-session",
+      password: "",
+    },
+  },
+});
