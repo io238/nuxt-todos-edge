@@ -73,7 +73,9 @@ const items = [
   <UCard @submit.prevent="addTodo">
     <template #header>
       <h3 class="text-lg font-semibold leading-6">
-        <NuxtLink to="/"> Todo List </NuxtLink>
+        <NuxtLink to="/">
+          Todo List
+        </NuxtLink>
       </h3>
 
       <UDropdown v-if="user" :items="items">
