@@ -34,6 +34,10 @@ useSeoMeta({
 import { useGeolocation, useTimeAgo } from "@vueuse/core";
 const { isSupported, coords, locatedAt } = useGeolocation();
 const timeAgo = useTimeAgo(locatedAt);
+
+const { metaSymbol } = useShortcuts();
+
+const selected = ref(true);
 </script>
 
 <template>
@@ -71,8 +75,18 @@ const timeAgo = useTimeAgo(locatedAt);
           </div>
         </div>
         <div v-else>
-          <UAlert icon="i-heroicons-map-pin" color="red" variant="solid" title="Warning" description="Location not available!" />
+          <UAlert
+            icon="i-heroicons-map-pin"
+            color="red"
+            variant="solid"
+            title="Warning"
+            description="Location not available!"
+          />
         </div>
+      </div>
+
+      <div class="mt-5">
+        {{ useUserSession().data }}
       </div>
     </footer>
   </UContainer>
