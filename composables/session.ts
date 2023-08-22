@@ -1,19 +1,22 @@
 import { UserSession } from "~/server/utils/session";
-const useUserSessionState = () => useState<UserSession>("nuxt-session", () => ({}));
+const useUserSessionState = () =>
+  useState<UserSession>("nuxt-session", () => ({}));
 
 export const useUserSession = () => {
   const sessionState = useUserSessionState();
   return {
-    loggedIn: computed(() => Boolean(sessionState.value.user)),
+    loggedIn: computed(() => process.dev || Boolean(sessionState.value.user)),
     user: computed(() => sessionState.value.user || null),
     data: sessionState,
     fetch,
-    clear
+    clear,
   };
 };
 
 async function fetch() {
-  useUserSessionState().value = await useRequestFetch()("/api/session").catch(() => ({}));
+  useUserSessionState().value = await useRequestFetch()("/api/session").catch(
+    () => ({})
+  );
 }
 
 async function clear() {
