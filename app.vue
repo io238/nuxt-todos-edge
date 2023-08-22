@@ -84,10 +84,6 @@ const selected = ref(true);
           />
         </div>
       </div>
-
-      <div class="mt-5">
-        {{ useUserSession().data }}
-      </div>
     </footer>
   </UContainer>
   <UNotifications />
