@@ -5,7 +5,7 @@ const useUserSessionState = () =>
 export const useUserSession = () => {
   const sessionState = useUserSessionState();
   return {
-    loggedIn: computed(() => process.dev || Boolean(sessionState.value.user)),
+    loggedIn: computed(() => Boolean(sessionState.value.user)),
     user: computed(() => sessionState.value.user || null),
     data: sessionState,
     fetch,
